@@ -1,0 +1,30 @@
+[
+    {
+        "type": "Hero",
+        "name": "Hero Banner",
+        "icon": "Sparkles",
+        "defaultSettings": {
+            "title": "Modern & <span class=\"italic font-light\">Minimalist</span> Essentials.",
+            "subtitle": "Curated collection for the contemporary lifestyle.",
+            "image": ""
+        }
+    },
+    {
+        "type": "Featured",
+        "name": "Featured Products",
+        "icon": "Star",
+        "defaultSettings": {
+            "title": "Seasonal <span class=\"italic font-light\">Selects</span>",
+            "subtitle": "Handpicked items for this season."
+        }
+    },
+    {
+        "type": "ContactForm",
+        "name": "Contact Form",
+        "icon": "Mail",
+        "defaultSettings": {
+            "title": "Get in Touch",
+            "subtitle": "Send us a message and we'll get back to you."
+        }
+    }
+]

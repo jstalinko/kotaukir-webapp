@@ -1,0 +1,40 @@
+[
+    {
+        "type": "Hero",
+        "name": "Hero Banner",
+        "icon": "Sparkles",
+        "defaultSettings": {
+            "title": "Keindahan <span class=\"text-orange-600 italic\">Klasik</span> untuk Rumah Anda.",
+            "subtitle": "Temukan koleksi furniture kayu jati pilihan yang dikerjakan dengan presisi tinggi oleh pengrajin terbaik kami.",
+            "image": "https://placehold.co/1200x600"
+        }
+    },
+    {
+        "type": "Featured",
+        "name": "Featured Products",
+        "icon": "Star",
+        "defaultSettings": {
+            "title": "Koleksi <span class=\"italic text-orange-600\">Terbaik</span> Kami",
+            "subtitle": "Produk terpopuler yang menjadi pilihan utama pelanggan kami bulan ini."
+        }
+    },
+    {
+        "type": "Cta",
+        "name": "CTA / WhatsApp",
+        "icon": "MessageCircle",
+        "defaultSettings": {
+            "text": "Tanya via WhatsApp",
+            "whatsapp_number": "6281234567890",
+            "message": "Halo, saya tertarik dengan produk Anda."
+        }
+    },
+    {
+        "type": "ContactForm",
+        "name": "Contact Form",
+        "icon": "Mail",
+        "defaultSettings": {
+            "title": "Hubungi Kami",
+            "subtitle": "Kirimkan pesan Anda dan kami akan segera merespons."
+        }
+    }
+]
