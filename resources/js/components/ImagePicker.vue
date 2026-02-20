@@ -60,7 +60,7 @@ const handleFileChange = async (event) => {
                 } else {
                     images.value = [url]
                 }
-                emit('update:modelValue', props.multiple ? images.value : images.value[0] || '')
+                emit('update:modelValue', props.multiple ? [...images.value] : images.value[0] || '')
             }
         }
     } catch (err) {
@@ -73,7 +73,7 @@ const handleFileChange = async (event) => {
 
 const removeImage = (index) => {
     images.value.splice(index, 1)
-    emit('update:modelValue', props.multiple ? images.value : images.value[0] || '')
+    emit('update:modelValue', props.multiple ? [...images.value] : images.value[0] || '')
 }
 
 const triggerInput = () => {

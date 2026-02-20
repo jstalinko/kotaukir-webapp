@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Inertia\Inertia;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -43,13 +44,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+
+        $validate = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'category_id' => 'required|integer',
             'content' => 'required|string',
             'tags' => 'nullable|array',
             'images' => 'nullable|array',
         ]);
+        if ($validate->fails()) {
+            //            dd($validate->errors());
+            return redirect()->back()->with('error', $validate->errors()->first());
+        }
 
         $auth = Auth::user();
 

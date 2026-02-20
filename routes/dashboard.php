@@ -5,10 +5,21 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-
-
 use App\Http\Controllers\Dashboard\MySiteController;
 use App\Http\Controllers\Dashboard\SiteMediaController;
+use Inertia\Inertia;
+
+Route::get('/', function () {
+    $user = auth()->user();
+    return Inertia::render('Dashboard', [
+        'stats' => [
+            'totalProducts' => $user->products()->count(),
+            'totalCategories' => $user->categories()->count(),
+            'totalViews' => $user->products()->sum('views'),
+            'accountLevel' => $user->level ?? 'basic',
+        ],
+    ]);
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/my-site', [MySiteController::class, 'index'])->name('dashboard.my-site');
 Route::post('/my-site/update', [MySiteController::class, 'update'])->name('dashboard.my-site.update');

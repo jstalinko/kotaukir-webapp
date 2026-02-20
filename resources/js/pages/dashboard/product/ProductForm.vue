@@ -142,7 +142,7 @@ const handleSubmit = () => {
                                     class="h-12 bg-black/40 border-white/10 focus:border-orange-500/50 rounded-xl px-4 text-white" />
                                 <p v-if="form.errors.title" class="text-xs text-red-500 italic ml-1">{{
                                     form.errors.title
-                                    }}</p>
+                                }}</p>
                             </div>
 
                             <div class="grid gap-3">
@@ -168,7 +168,7 @@ const handleSubmit = () => {
                             <span class="text-xs text-gray-500 font-medium">Multiple images supported</span>
                         </div>
 
-                        <ImagePicker v-model="form.images" />
+                        <ImagePicker v-model="form.images" multiple />
                     </div>
                 </div>
 

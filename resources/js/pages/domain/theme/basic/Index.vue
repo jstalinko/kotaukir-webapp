@@ -10,7 +10,13 @@ const props = defineProps({
     products: Array,
     categories: Array,
     category: Object,
+    latest_posts: Array,
 });
+
+const stripHtml = (html) => {
+    if (!html) return '';
+    return html.replace(/<[^>]*>?/gm, '');
+};
 </script>
 
 <template>
@@ -106,6 +112,41 @@ const props = defineProps({
                 <div v-if="products.length > 0"
                     class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
                     <ProductCard v-for="product in products" :key="product.id" :product="product" :user="user" />
+                </div>
+            </section>
+
+            <!-- Latest Posts / Articles -->
+            <section v-if="latest_posts && latest_posts.length > 0"
+                class="max-w-7xl mx-auto px-6 lg:px-10 py-24 bg-[#FAFAFA] rounded-[48px] my-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-16 px-4">
+                    <div class="max-w-2xl">
+                        <span
+                            class="text-[10px] font-black uppercase tracking-[0.4em] text-black/30 block mb-4">Journal</span>
+                        <h2 class="text-5xl font-black text-black tracking-tighter uppercase">Latest <span
+                                class="italic font-light">Articles</span></h2>
+                    </div>
+                    <Link :href="`/${user.name}/post`"
+                        class="text-xs font-black uppercase tracking-[0.2em] text-black px-8 py-4 border border-black/10 rounded-full hover:bg-black hover:text-white transition-all">
+                        Read All
+                    </Link>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <Link v-for="post in latest_posts" :key="post.id" :href="`/${user.name}/post/${post.slug}`"
+                        class="group block">
+                        <div class="aspect-[4/3] rounded-3xl overflow-hidden bg-black/5 mb-6">
+                            <img v-if="post.image" :src="post.image"
+                                class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" />
+                            <div v-else class="w-full h-full flex items-center justify-center text-black/20">No Image
+                            </div>
+                        </div>
+                        <h3
+                            class="text-xl font-bold uppercase tracking-tight mb-3 line-clamp-2 group-hover:text-black/60 transition-colors">
+                            {{ post.title }}</h3>
+                        <p class="text-sm text-black/50 line-clamp-3 leading-relaxed">{{ stripHtml(post.content) ||
+                            'Read more...' }}
+                        </p>
+                    </Link>
                 </div>
             </section>
         </div>

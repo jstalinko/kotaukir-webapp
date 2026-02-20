@@ -120,7 +120,7 @@ const parseImages = (images) => {
                     <p class="text-sm text-muted-foreground">Kelola semua produk Anda</p>
                 </div>
                 <Link href="/dashboard/product/create">
-                    <Button class="gap-2">
+                    <Button class="bg-orange-600 hover:bg-orange-500 text-white gap-2">
                         <Plus class="h-4 w-4" />
                         Tambah Produk
                     </Button>
