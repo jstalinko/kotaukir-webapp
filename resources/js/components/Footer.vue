@@ -11,7 +11,7 @@ const year = new Date().getFullYear();
                 <!-- Logo/Brand -->
                 <Link href="/"
                     class="text-orange-500 text-2xl font-extrabold tracking-tighter hover:scale-105 transition-transform">
-                    kotaukir<span class="text-white">.ID</span>
+                    <img src="/logo.png" alt="Logo" class="h-12 w-auto" />
                 </Link>
 
                 <!-- Links -->
@@ -29,8 +29,8 @@ const year = new Date().getFullYear();
 
                 <!-- Copyright -->
                 <p class="text-sm text-zinc-500">
-                    &copy; {{ year }} KotaUkir.ID - Crafted for the finest furniture makers. All
-                    rights reserved.
+                    &copy; {{ year }} KotaUkir.ID | Powered by <a href="https://javara.digital/?utm_source=kotaukir.id"
+                        target="_blank" class="text-orange-500 hover:text-orange-600">JavaraDigital</a>
                 </p>
             </div>
         </div>

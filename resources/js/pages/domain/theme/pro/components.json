@@ -1,0 +1,28 @@
+[
+    {
+        "type": "Hero",
+        "name": "Pro Hero Banner",
+        "icon": "Box",
+        "defaultSettings": {
+            "title": "Professional Woodworking",
+            "subtitle": "High-quality precision furniture"
+        }
+    },
+    {
+        "type": "Featured",
+        "name": "Featured Products",
+        "icon": "Star",
+        "defaultSettings": {
+            "title": "Top Selling Inventory"
+        }
+    },
+    {
+        "type": "Post",
+        "name": "Latest News",
+        "icon": "Newspaper",
+        "defaultSettings": {
+            "title": "Corporate Journal",
+            "subtitle": "Latest updates and articles"
+        }
+    }
+]

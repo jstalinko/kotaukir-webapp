@@ -41,9 +41,7 @@ const handleLogout = () => {
             <div class="flex items-center justify-between">
                 <!-- Brand Logo -->
                 <Link href="/" class="flex items-center gap-2 font-bold transition-transform hover:scale-105">
-                    <span
-                        class="text-orange-500 text-xl font-extrabold tracking-tighter decoration-orange-500/30">kotaukir<span
-                            class="text-white">.ID</span></span>
+                    <img src="/logo.png" alt="Logo" class="h-6 w-auto" />
                 </Link>
 
                 <!-- Desktop Navigation -->
@@ -95,7 +93,7 @@ const handleLogout = () => {
                                     </div>
                                     <span class="text-xs font-medium">{{
                                         user?.name
-                                        }}</span>
+                                    }}</span>
                                     <Menu class="h-3 w-3 opacity-50" />
                                 </Button>
                             </DropdownMenuTrigger>

@@ -11,6 +11,7 @@ import GeneralTab from './my-site/GeneralTab.vue';
 import ThemeTab from './my-site/ThemeTab.vue';
 import PagesTab from './my-site/PagesTab.vue';
 import BuilderTab from './my-site/BuilderTab.vue';
+import THEMES from '@/lib/registered-themes';
 
 const props = defineProps({ site: Object });
 
@@ -53,10 +54,7 @@ watch(() => props.site, (newSite) => {
     form.menus = newSite.menus || [];
 }, { deep: true });
 
-const themes = [
-    { id: 'default', name: 'Furniture Gallery', description: 'Premium, warm, and elegant design for furniture catalogs.', preview: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80' },
-    { id: 'basic', name: 'Basic Modern', description: 'Minimalist monochrome design with centered glassmorphism navigation.', preview: 'https://images.unsplash.com/photo-1513506003901-1e6a35072c63?auto=format&fit=crop&q=80' },
-];
+const themes = THEMES;
 
 const themeComponentsMap = { default: defaultComponents, basic: basicComponents };
 const availableComponents = computed(() => themeComponentsMap[form.theme] || defaultComponents);
