@@ -56,8 +56,8 @@ const stripHtml = (html) => {
                         <h2
                             class="text-2xl font-black uppercase tracking-tight line-clamp-2 group-hover:text-black/60 transition-colors">
                             {{ post.title }}</h2>
-                        <p class="text-black/50 line-clamp-3 leading-relaxed">{{ stripHtml(post.content) || 'Click to
-                            read full article...' }}</p>
+                        <p class="text-black/50 line-clamp-3 leading-relaxed">{{ stripHtml(post.content) ||
+                            'Click to read full article...' }}</p>
                     </div>
                 </Link>
             </div>
