@@ -50,7 +50,7 @@ class SiteController extends Controller
             ->where('status', 'published')
             ->where('type', 'post')
             ->orderBy('created_at', 'desc')
-            ->limit(3)
+            ->limit(6)
             ->get();
 
         return Inertia::render('domain/Index', [
@@ -172,6 +172,22 @@ class SiteController extends Controller
 
         $pages = $site->pages ?? [];
         $pageData = collect($pages)->firstWhere('slug', $slug);
+        $products = Product::where('user_id', $user->id)
+            ->where('is_published', true)
+            ->with('category')
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $categories = Category::where('user_id', $user->id)
+            ->where('is_published', true)
+            ->get();
+
+        $latest_posts = Post::where('user_id', $user->id)
+            ->where('status', 'published')
+            ->where('type', 'post')
+            ->orderBy('created_at', 'desc')
+            ->limit(6)
+            ->get();
 
         if (!$pageData) {
             abort(404);
@@ -182,6 +198,9 @@ class SiteController extends Controller
             'user' => $user,
             'site' => $site,
             'page' => $pageData,
+            'products' => $products,
+            'categories' => $categories,
+            'latest_posts' => $latest_posts,
         ]);
     }
 

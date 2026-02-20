@@ -9,6 +9,9 @@ const props = defineProps({
     user: Object,
     site: Object,
     page: Object,
+    latest_posts: Array,
+    products: Array,
+    categories: Array,
 });
 
 // Dynamically import the theme's Page component

@@ -10,6 +10,7 @@ const props = defineProps({
     site: Object,
     products: Array,
     categories: Array,
+    latest_posts: Array,
     category: Object, // Optional, for category pages
 });
 

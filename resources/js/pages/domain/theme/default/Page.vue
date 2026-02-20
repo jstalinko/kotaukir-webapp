@@ -6,6 +6,9 @@ const props = defineProps({
     user: Object,
     site: Object,
     page: Object,
+    latest_posts: Array,
+    products: Array,
+    categories: Array,
 });
 
 // Same componentMap pattern as Index.vue
@@ -24,6 +27,10 @@ const activeComponents = computed(() => {
 const sharedProps = computed(() => ({
     user: props.user,
     site: props.site,
+    latest_posts: props.latest_posts,
+    products: props.products,
+    categories: props.categories,
+
 }));
 </script>
 

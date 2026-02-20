@@ -36,5 +36,14 @@
             "title": "Hubungi Kami",
             "subtitle": "Kirimkan pesan Anda dan kami akan segera merespons."
         }
+    },
+    {
+        "type": "Post",
+        "name": "Latest Posts",
+        "icon": "Sparkles",
+        "defaultSettings": {
+            "title": "Latest Posts",
+            "subtitle": "Latest Posts"
+        }
     }
 ]
