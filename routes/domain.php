@@ -14,4 +14,4 @@ Route::group(['prefix' => '/{username}'], function () {
     Route::get('/post/{slug}', [SiteController::class, 'post'])->name('domain.post');
     Route::get('/search', [SiteController::class, 'search'])->name('domain.search');
     Route::post('/contact', [SiteController::class, 'contact'])->name('domain.contact');
-});
+})->name('base-domain');

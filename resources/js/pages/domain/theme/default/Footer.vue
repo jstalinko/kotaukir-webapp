@@ -2,6 +2,7 @@
 import { Link, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import { Facebook, Instagram, Twitter, MapPin, Phone, Mail } from 'lucide-vue-next';
+import { getDomainUrl } from '../../../../lib/domain';
 
 const page = usePage();
 const domainData = computed(() => page.props.domain || {});
@@ -25,7 +26,7 @@ const menus = computed(() => site.value.menus || []);
                         </div>
                         <img v-else :src="site.site_logo" class="h-10 w-auto object-contain bg-white/10 rounded" />
                         <span class="text-2xl font-bold font-serif tracking-tight">{{ site?.site_name || user.name
-                            }}</span>
+                        }}</span>
                     </div>
                     <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
                         {{ site?.site_description || 'Website furniture gratis di buat di kotaukir.id' }}
@@ -59,16 +60,16 @@ const menus = computed(() => site.value.menus || []);
                         </template>
                         <template v-else>
                             <li>
-                                <Link :href="`/${user.name}`"
+                                <Link :href="getDomainUrl(user.name, '/')"
                                     class="text-gray-400 hover:text-orange-400 text-sm transition-colors">Utama</Link>
                             </li>
                             <li>
-                                <Link :href="`/${user.name}/products`"
+                                <Link :href="getDomainUrl(user.name, '/products')"
                                     class="text-gray-400 hover:text-orange-400 text-sm transition-colors">Koleksi Produk
                                 </Link>
                             </li>
                             <li>
-                                <Link :href="`/${user.name}/post`"
+                                <Link :href="getDomainUrl(user.name, '/post')"
                                     class="text-gray-400 hover:text-orange-400 text-sm transition-colors">Artikel &
                                     Jurnal</Link>
                             </li>
@@ -82,7 +83,8 @@ const menus = computed(() => site.value.menus || []);
                     <div class="space-y-4">
                         <template v-if="bestProducts.length > 0">
                             <Link v-for="product in bestProducts.slice(0, 3)" :key="product.id"
-                                :href="`/${user.name}/product/${product.slug}`" class="group flex items-center gap-4">
+                                :href="getDomainUrl(user.name, `/product/${product.slug}`)"
+                                class="group flex items-center gap-4">
                                 <div class="w-12 h-12 rounded bg-white/5 overflow-hidden flex-shrink-0">
                                     <img v-if="product.images?.[0]"
                                         :src="typeof product.images === 'string' ? JSON.parse(product.images)[0] : product.images[0]"

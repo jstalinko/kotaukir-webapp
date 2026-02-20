@@ -1,6 +1,7 @@
 <script setup>
 import { Link, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
+import { getDomainUrl } from '../../../../lib/domain';
 
 const page = usePage();
 const domainData = computed(() => page.props.domain || {});
@@ -42,13 +43,13 @@ const menus = computed(() => site.value.menus || []);
                             </a>
                         </template>
                         <template v-else>
-                            <Link :href="`/${user.name}`"
+                            <Link :href="getDomainUrl(user.name, '/')"
                                 class="text-sm font-bold tracking-tight text-black/70 hover:text-black transition-colors">
                                 Home</Link>
-                            <Link :href="`/${user.name}/products`"
+                            <Link :href="getDomainUrl(user.name, '/products')"
                                 class="text-sm font-bold tracking-tight text-black/70 hover:text-black transition-colors">
                                 Shop</Link>
-                            <Link :href="`/${user.name}/post`"
+                            <Link :href="getDomainUrl(user.name, '/post')"
                                 class="text-sm font-bold tracking-tight text-black/70 hover:text-black transition-colors">
                                 Journal</Link>
                         </template>
@@ -61,7 +62,7 @@ const menus = computed(() => site.value.menus || []);
                     <div class="flex flex-col gap-4">
                         <template v-if="bestProducts.length > 0">
                             <Link v-for="product in bestProducts.slice(0, 3)" :key="product.id"
-                                :href="`/${user.name}/product/${product.slug}`" class="group flex items-center gap-4">
+                                :href="getDomainUrl(user.name, `/product/${product.slug}`)" class="group flex items-center gap-4">
                                 <div class="w-12 h-12 rounded-xl bg-black/5 overflow-hidden flex-shrink-0">
                                     <img v-if="product.images?.[0]"
                                         :src="typeof product.images === 'string' ? JSON.parse(product.images)[0] : product.images[0]"

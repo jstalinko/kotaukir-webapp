@@ -3,6 +3,7 @@ import Layout from './Layout.vue';
 import { ShoppingBag, MessageCircle, ChevronLeft, ChevronRight, Share2, Star, ShieldCheck, Truck } from 'lucide-vue-next';
 import { Link } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
+import { getDomainUrl } from '../../../../lib/domain';
 
 const props = defineProps({
     user: Object,
@@ -45,7 +46,7 @@ const formatPrice = (price) => {
             <nav class="flex mb-12 text-[10px] font-black uppercase tracking-[0.3em]" aria-label="Breadcrumb">
                 <ol class="flex items-center space-x-3">
                     <li>
-                        <Link :href="`/domain/${user.name}`" class="text-black/30 hover:text-black">Home</Link>
+                        <Link :href="getDomainUrl(user.name, '/')" class="text-black/30 hover:text-black">Home</Link>
                     </li>
                     <li class="flex items-center space-x-3">
                         <span class="text-black/10">/</span>
@@ -53,7 +54,7 @@ const formatPrice = (price) => {
                     </li>
                     <li v-if="product.category" class="flex items-center space-x-3">
                         <span class="text-black/10">/</span>
-                        <Link :href="`/domain/${user.name}/category/${product.category.slug}`"
+                        <Link :href="getDomainUrl(user.name, `/category/${product.category.slug}`)"
                             class="text-black/30 hover:text-black">{{ product.category.name }}</Link>
                     </li>
                 </ol>
@@ -152,7 +153,7 @@ const formatPrice = (price) => {
                     <div class="p-8 bg-black rounded-[40px] text-center">
                         <p class="text-[10px] text-white/40 font-black uppercase tracking-[0.2em]">
                             Sustainable design practice by <span class="text-white">{{ site?.site_name || user.name
-                                }}</span>.
+                            }}</span>.
                         </p>
                     </div>
                 </div>

@@ -2,6 +2,7 @@
 import Layout from './Layout.vue';
 import { defineAsyncComponent, computed } from 'vue';
 import { Link } from '@inertiajs/vue3';
+import { getDomainUrl } from '../../../../lib/domain';
 
 const props = defineProps({
     user: Object,
@@ -56,7 +57,8 @@ const sharedProps = computed(() => ({
         <template v-if="activeComponents.length === 0">
             <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
                 <div class="flex items-center gap-4 overflow-x-auto pb-4 mb-10 scrollbar-hide">
-                    <Link v-for="cat in categories" :key="cat.id" :href="`/domain/${user?.name}/category/${cat.slug}`"
+                    <Link v-for="cat in categories" :key="cat.id"
+                        :href="getDomainUrl(user?.name, `/category/${cat.slug}`)"
                         class="px-8 py-3 bg-white border border-brown-100/10 rounded-full shadow-sm whitespace-nowrap text-sm font-bold text-[#451A03] hover:bg-[#451A03] hover:text-white transition-all">
                         {{ cat.name }}
                     </Link>
@@ -77,14 +79,14 @@ const sharedProps = computed(() => ({
                     <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Latest Articles</h2>
                     <p class="text-gray-500 mt-2 font-medium">Insights and updates</p>
                 </div>
-                <Link :href="`/${user.name}/post`"
+                <Link :href="getDomainUrl(user.name, '/post')"
                     class="text-sm font-bold text-brown-600 hover:text-brown-800 transition-colors uppercase tracking-wider">
                     View All &rarr;
                 </Link>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <Link v-for="post in latest_posts" :key="post.id" :href="`/${user.name}/post/${post.slug}`"
+                <Link v-for="post in latest_posts" :key="post.id" :href="getDomainUrl(user.name, `/post/${post.slug}`)"
                     class="group block overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-md transition-all duration-300">
                     <div class="aspect-video w-full bg-gray-100 overflow-hidden">
                         <img v-if="post.image" :src="post.image"

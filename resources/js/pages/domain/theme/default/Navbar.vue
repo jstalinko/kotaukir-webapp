@@ -2,6 +2,7 @@
 import { Link } from '@inertiajs/vue3';
 import { ShoppingBag, Search, Menu, X } from 'lucide-vue-next';
 import { ref } from 'vue';
+import { getDomainUrl } from '../../../../lib/domain';
 
 const props = defineProps({
     user: Object,
@@ -40,10 +41,10 @@ const isMobileMenuOpen = ref(false);
                         </Link>
                     </template>
                     <template v-else>
-                        <Link :href="`/domain/${user.name}`"
+                        <Link :href="getDomainUrl(user.name, '/')"
                             class="text-sm font-medium text-[#451A03]/70 hover:text-orange-600 transition-colors">Home
                         </Link>
-                        <Link :href="`/domain/${user.name}/category/all`"
+                        <Link :href="getDomainUrl(user.name, '/products')"
                             class="text-sm font-medium text-[#451A03]/70 hover:text-orange-600 transition-colors">
                             Koleksi
                         </Link>
@@ -83,10 +84,10 @@ const isMobileMenuOpen = ref(false);
                     </Link>
                 </template>
                 <template v-else>
-                    <Link :href="`/domain/${user.name}`"
+                    <Link :href="getDomainUrl(user.name, '/')"
                         class="block px-4 py-3 text-base font-medium text-[#451A03] rounded-xl hover:bg-orange-50">Home
                     </Link>
-                    <Link :href="`/domain/${user.name}/category/all`"
+                    <Link :href="getDomainUrl(user.name, '/products')"
                         class="block px-4 py-3 text-base font-medium text-[#451A03] rounded-xl hover:bg-orange-50">
                         Koleksi
                     </Link>

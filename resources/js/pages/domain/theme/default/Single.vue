@@ -3,6 +3,7 @@ import Layout from './Layout.vue';
 import { ShoppingCart, MessageCircle, ChevronLeft, ChevronRight, Share2, Star, ShieldCheck, Truck } from 'lucide-vue-next';
 import { Link } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
+import { getDomainUrl } from '../../../../lib/domain';
 
 const props = defineProps({
     user: Object,
@@ -36,7 +37,8 @@ const whatsappLink = computed(() => {
             <nav class="flex mb-8 text-xs font-bold uppercase tracking-widest" aria-label="Breadcrumb">
                 <ol class="flex items-center space-x-2">
                     <li>
-                        <Link :href="`/domain/${user.name}`" class="text-gray-400 hover:text-[#451A03]">Beranda</Link>
+                        <Link :href="getDomainUrl(user.name, '/')" class="text-gray-400 hover:text-[#451A03]">Beranda
+                        </Link>
                     </li>
                     <li class="flex items-center space-x-2">
                         <ChevronRight class="w-3 h-3 text-gray-300" />
@@ -44,7 +46,7 @@ const whatsappLink = computed(() => {
                     </li>
                     <li v-if="product.category" class="flex items-center space-x-2">
                         <ChevronRight class="w-3 h-3 text-gray-300" />
-                        <Link :href="`/domain/${user.name}/category/${product.category.slug}`"
+                        <Link :href="getDomainUrl(user.name, `/category/${product.category.slug}`)"
                             class="text-gray-400 hover:text-[#451A03]">{{ product.category.name }}</Link>
                     </li>
                 </ol>

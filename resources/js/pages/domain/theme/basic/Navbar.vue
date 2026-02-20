@@ -2,6 +2,7 @@
 import { Link } from '@inertiajs/vue3';
 import { ShoppingBag, Search, Menu, X } from 'lucide-vue-next';
 import { ref } from 'vue';
+import { getDomainUrl } from '../../../../lib/domain';
 
 const props = defineProps({
     user: Object,
@@ -25,11 +26,11 @@ const isMobileMenuOpen = ref(false);
                         </Link>
                     </template>
                     <template v-else>
-                        <Link :href="`/domain/${user.name}`"
+                        <Link :href="getDomainUrl(user.name, '/')"
                             class="text-xs font-bold uppercase tracking-widest text-black/50 hover:text-black transition-colors">
                             Home
                         </Link>
-                        <Link :href="`/domain/${user.name}/category/all`"
+                        <Link :href="getDomainUrl(user.name, '/category/all')"
                             class="text-xs font-bold uppercase tracking-widest text-black/50 hover:text-black transition-colors">
                             Shop
                         </Link>
@@ -38,7 +39,7 @@ const isMobileMenuOpen = ref(false);
 
                 <!-- Logo (Center) -->
                 <div class="flex-shrink-0 flex items-center justify-center flex-1">
-                    <Link :href="`/domain/${user.name}`" class="flex items-center gap-3">
+                    <Link :href="getDomainUrl(user.name, '/')" class="flex items-center gap-3">
                         <div v-if="!site?.site_logo"
                             class="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg">
                             {{ (site?.site_name || user.name).charAt(0).toUpperCase() }}

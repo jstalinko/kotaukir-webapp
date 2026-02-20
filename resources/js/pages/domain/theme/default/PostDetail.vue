@@ -2,6 +2,7 @@
 import { Head, Link } from '@inertiajs/vue3';
 import Layout from './Layout.vue';
 import { ArrowLeft, Clock, Eye } from 'lucide-vue-next';
+import { getDomainUrl } from '../../../../lib/domain';
 
 const props = defineProps({
     user: Object,
@@ -17,7 +18,7 @@ const props = defineProps({
 
     <Layout :user="user" :site="site">
         <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-[70vh]">
-            <Link :href="`/${user.name}/post`"
+            <Link :href="getDomainUrl(user.name, '/post')"
                 class="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-brown-600 mb-12 transition-colors">
                 <ArrowLeft class="w-4 h-4" /> Back to Journal
             </Link>
@@ -29,7 +30,8 @@ const props = defineProps({
                         <Clock class="w-3.5 h-3.5" />
                         {{ new Date(post.created_at).toLocaleDateString('en-US', {
                             day: 'numeric', month: 'long', year:
-                        'numeric' }) }}
+                                'numeric'
+                        }) }}
                     </span>
                     <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
                     <span
@@ -44,7 +46,7 @@ const props = defineProps({
                 </div>
 
                 <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">{{ post.title
-                    }}</h1>
+                }}</h1>
             </header>
 
             <div v-if="post.image" class="aspect-video w-full rounded-3xl overflow-hidden mb-16 bg-gray-100 shadow-md">

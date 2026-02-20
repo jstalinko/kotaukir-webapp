@@ -3,6 +3,7 @@ import Layout from './Layout.vue';
 import ProductCard from './components/ProductCard.vue';
 import { ChevronRight, ArrowRight, Star, Quote } from 'lucide-vue-next';
 import { Link } from '@inertiajs/vue3';
+import { getDomainUrl } from '../../../../lib/domain';
 
 const props = defineProps({
     user: Object,
@@ -74,7 +75,7 @@ const stripHtml = (html) => {
                             <h2 v-html="comp.settings?.title || 'Seasonal <span class=\'italic font-light\'>Selects</span>'"
                                 class="text-5xl font-black text-black tracking-tighter uppercase"></h2>
                         </div>
-                        <Link :href="`/domain/${user.name}/category/all`"
+                        <Link :href="getDomainUrl(user.name, '/category/all')"
                             class="text-xs font-black uppercase tracking-[0.2em] text-black px-8 py-4 border border-black/10 rounded-full hover:bg-black hover:text-white transition-all">
                             Browse All
                         </Link>
@@ -93,7 +94,7 @@ const stripHtml = (html) => {
                 <div class="max-w-7xl mx-auto px-6 lg:px-10">
                     <div class="flex items-center gap-12 overflow-x-auto pb-4 scrollbar-hide">
                         <Link v-for="cat in categories" :key="cat.id"
-                            :href="`/domain/${user.name}/category/${cat.slug}`"
+                            :href="getDomainUrl(user.name, `/category/${cat.slug}`)"
                             class="text-4xl md:text-6xl font-black text-white/20 hover:text-white transition-all whitespace-nowrap uppercase tracking-tighter italic hover:scale-105 duration-500">
                             {{ cat.name }} /
                         </Link>
@@ -125,14 +126,14 @@ const stripHtml = (html) => {
                         <h2 class="text-5xl font-black text-black tracking-tighter uppercase">Latest <span
                                 class="italic font-light">Articles</span></h2>
                     </div>
-                    <Link :href="`/${user.name}/post`"
+                    <Link :href="getDomainUrl(user.name, '/post')"
                         class="text-xs font-black uppercase tracking-[0.2em] text-black px-8 py-4 border border-black/10 rounded-full hover:bg-black hover:text-white transition-all">
                         Read All
                     </Link>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <Link v-for="post in latest_posts" :key="post.id" :href="`/${user.name}/post/${post.slug}`"
+                    <Link v-for="post in latest_posts" :key="post.id" :href="getDomainUrl(user.name, `/post/${post.slug}`)"
                         class="group block">
                         <div class="aspect-[4/3] rounded-3xl overflow-hidden bg-black/5 mb-6">
                             <img v-if="post.image" :src="post.image"
@@ -169,7 +170,7 @@ const stripHtml = (html) => {
             </div>
             <div v-else class="py-40 text-center bg-white rounded-[48px] border border-black/5">
                 <h3 class="text-2xl font-black uppercase tracking-tighter">No items found</h3>
-                <Link :href="`/domain/${user.name}`"
+                <Link :href="getDomainUrl(user.name, '/')"
                     class="mt-8 inline-block px-10 py-4 bg-black text-white rounded-full font-black text-xs uppercase tracking-widest">
                     Back to home</Link>
             </div>

@@ -2,6 +2,7 @@
 import { Head, Link } from '@inertiajs/vue3';
 import Layout from './Layout.vue';
 import { ArrowLeft } from 'lucide-vue-next';
+import { getDomainUrl } from '../../../../lib/domain';
 
 const props = defineProps({
     user: Object,
@@ -17,7 +18,7 @@ const props = defineProps({
 
     <Layout :user="user" :site="site">
         <article class="max-w-4xl mx-auto px-6 lg:px-10 py-20 min-h-[70vh]">
-            <Link :href="`/${user.name}/post`"
+            <Link :href="getDomainUrl(user.name, '/post')"
                 class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-black/50 hover:text-black mb-16 transition-colors">
                 <ArrowLeft class="w-4 h-4" /> Back to Journal
             </Link>
@@ -27,7 +28,8 @@ const props = defineProps({
                     <span class="text-[10px] font-black uppercase tracking-widest text-black/40">{{ new
                         Date(post.created_at).toLocaleDateString('en-US', {
                             day: 'numeric', month: 'long', year:
-                        'numeric' }) }}</span>
+                                'numeric'
+                        }) }}</span>
                     <span class="w-10 h-[1px] bg-black/10"></span>
                     <span
                         class="text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 bg-black/5 rounded-full text-black/60">{{

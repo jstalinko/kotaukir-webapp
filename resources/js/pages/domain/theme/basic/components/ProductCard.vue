@@ -1,6 +1,7 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import { ShoppingBag, Eye } from 'lucide-vue-next';
+import { getDomainUrl } from '../../../../../lib/domain';
 
 defineProps({
     product: Object,
@@ -33,7 +34,7 @@ const formatPrice = (price) => {
             <!-- Overlay Actions -->
             <div
                 class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-3">
-                <Link :href="`/domain/${user.name}/product/${product.slug}`"
+                <Link :href="getDomainUrl(user.name, `/product/${product.slug}`)"
                     class="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center shadow-xl hover:bg-black hover:text-white transition-all hover:scale-110">
                     <Eye class="w-6 h-6" />
                 </Link>
@@ -72,7 +73,7 @@ const formatPrice = (price) => {
                 {{ product.description || 'Minimalist design crafted for modern living spaces.' }}
             </p>
 
-            <Link :href="`/domain/${user.name}/product/${product.slug}`"
+            <Link :href="getDomainUrl(user.name, `/product/${product.slug}`)"
                 class="block w-full text-center py-4 bg-black text-white rounded-2xl text-xs font-black uppercase tracking-[0.2em] transition-all hover:bg-white hover:text-black hover:ring-1 hover:ring-black/10">
                 View Detail
             </Link>

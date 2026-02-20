@@ -2,6 +2,7 @@
 import { Head, Link } from '@inertiajs/vue3';
 import Layout from './Layout.vue';
 import { ArrowLeft } from 'lucide-vue-next';
+import { getDomainUrl } from '../../../../lib/domain';
 
 const props = defineProps({
     user: Object,
@@ -22,7 +23,7 @@ const stripHtml = (html) => {
     <Layout :user="user" :site="site">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-[70vh]">
             <div class="mb-12">
-                <Link :href="`/${user.name}`"
+                <Link :href="getDomainUrl(user.name, '/')"
                     class="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-brown-600 mb-8 transition-colors">
                     <ArrowLeft class="w-4 h-4" /> Back to Home
                 </Link>
@@ -35,7 +36,7 @@ const stripHtml = (html) => {
             </div>
 
             <div v-if="posts && posts.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <Link v-for="post in posts" :key="post.id" :href="`/${user.name}/post/${post.slug}`"
+                <Link v-for="post in posts" :key="post.id" :href="getDomainUrl(user.name, `/post/${post.slug}`)"
                     class="group block overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
                     <div class="aspect-video w-full bg-gray-100 overflow-hidden">
                         <img v-if="post.image" :src="post.image"
