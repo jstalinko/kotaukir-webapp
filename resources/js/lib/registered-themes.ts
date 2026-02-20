@@ -22,7 +22,7 @@ const THEMES: THEMES[] =[
         id: 'pro',
         name: 'KotaUkir Pro',
         description: 'Modern, professional bordered design with orange accents. No navbar for pure focus.',
-        preview: '/theme-img/default.png' // You can update this preview image later
+        preview: '/theme-img/pro.png' // You can update this preview image later
     }
 ];
 
